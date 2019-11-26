@@ -2,8 +2,8 @@
 # MIT license
 
 CC        = ${DJGPP_CC}
-CFLAGS    = -DHAVE_STDBOOL_H=1 -Wall -Wno-unused -mtune=i386 -I.
-LDFLAGS   = 
+CFLAGS    = -DHAVE_STDBOOL_H=1 -Wall -Wno-unused -mtune=i386 -fgnu89-inline -Ivendor/grx249/include -I.
+LDFLAGS   = -Lvendor/grx249/lib/dj2 -lgrx20
 
 TITLE     = CGEGA Engine
 COPYRIGHT = (C) 2015-2016, Michiel Sikma (MIT license)
@@ -16,7 +16,7 @@ STATICDIR = static
 
 # Static files, e.g. the readme.txt file, that get copied straight to
 # the dist directory.
-STATIC    = $(shell find ${STATICDIR} -name "*.*" -not -name ".*" -type f ! -path ${STATICRES}?* 2> /dev/null)
+STATIC    = $(shell find ${STATICDIR} -name "*.*" -not -name ".*" -type f)
 STATICDEST= $(subst ${STATICDIR},${DISTDIR},${STATIC})
 
 # All source files (*.c) and their corresponding object files.
